@@ -2,7 +2,7 @@
 
 Personal portfolio website for Summer 2027 internship applications — Product Management, AI/ML Engineering, Forward-Deployed Engineering, Full-Stack, AI Agents, SRE, and Software Engineering roles.
 
-**Live site:** https://william-franklyn.github.io/william_frank_mahunda/
+**Live site:** https://william-frank-mahunda.vercel.app (also deployable via GitHub Pages at https://william-franklyn.github.io/william_frank_mahunda/)
 
 ## Structure
 

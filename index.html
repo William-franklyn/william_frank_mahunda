@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
 </head>
 <body>
 
@@ -24,12 +24,13 @@
 
 <header class="nav" id="top">
   <div class="container nav-inner">
-    <a href="#top" class="brand">WF<span>M</span></a>
+    <a href="#top" class="brand"><img src="assets/logo.svg" alt="" class="brand-logo">WF<span>M</span></a>
     <nav class="nav-links" id="navLinks">
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
       <a href="#ai4all">AI4ALL</a>
+      <a href="#codepath">CodePath</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
       <a href="resume.html" class="btn btn-small btn-primary">Resume</a>
@@ -42,10 +43,10 @@
   <!-- ============ HERO ============ -->
   <section class="hero">
     <div class="container">
-      <p class="hero-kicker">Alfred University · B.S. Computer Science · Presidential Scholar (full-ride merit)</p>
+      <p class="hero-kicker">Alfred University · Computer Science · Presidential Scholar</p>
       <h1><span class="grad-text">William Frank Mahunda</span></h1>
       <p class="hero-title">Product Builder &amp; AI Engineer — from user discovery and go-to-market to RAG pipelines, agentic systems, and computer vision.</p>
-      <p class="hero-sub">Fintech startup founder backed by UNDP seed capital. Shipped 10+ AI applications. Alum of AI4ALL Ignite, CodePath, Goldman Sachs Possibilities, and McKinsey Forward.</p>
+      <p class="hero-sub">Fintech startup founder funded through UNDP's Funguo Program. Shipped 10+ AI applications. Alum of AI4ALL Ignite, CodePath, Goldman Sachs Possibilities, and McKinsey Forward.</p>
 
       <div class="hero-roles">
         <span class="roles-label">Seeking Summer 2027 internships in</span>
@@ -70,7 +71,7 @@
 
       <div class="hero-stats">
         <div class="stat"><strong>10+</strong><span>AI apps shipped</span></div>
-        <div class="stat"><strong>4M TZS</strong><span>UNDP seed capital raised</span></div>
+        <div class="stat"><strong>4M TZS</strong><span>raised via UNDP's Funguo Program</span></div>
         <div class="stat"><strong>1,000+</strong><span>waitlist users acquired</span></div>
         <div class="stat"><strong>50+</strong><span>youth taught tech skills</span></div>
       </div>
@@ -83,17 +84,19 @@
       <h2><span class="section-num">01</span> About</h2>
       <div class="about-grid">
         <div>
-          <p>I'm a Computer Science student at Alfred University and the founder of <strong>Kibenki</strong>, a fintech startup that brought emergency liquidity and financial access to SME workers in Tanzania who are excluded from traditional credit markets. I owned the product end to end — user research, roadmap, investor pitches, regulatory compliance — and raised seed capital from the UNDP.</p>
+          <p>I'm a Computer Science student and Presidential Scholar at Alfred University, and the founder of <strong>Kibenki</strong>, a fintech startup that brought emergency liquidity and financial access to SME workers in Tanzania who are excluded from traditional credit markets. I owned the product end to end — user research, roadmap, investor pitches, regulatory compliance — and raised seed capital through UNDP's Funguo Program.</p>
           <p>That founder experience is why I build software the way a product manager thinks: start with the user's problem, validate demand, then ship. On the engineering side, I've built RAG document Q&amp;A systems, agentic debugging assistants, real-time computer vision pipelines, and full-stack products — using Claude and OpenAI APIs, LangChain, YOLOv8, React, and Node.js.</p>
+          <p>Beyond work, I partnered with former BBC journalist Vicky Ntetema to establish <strong>Smota</strong>, a nonprofit supporting underserved families of children with albinism in Tanzania, where I led communications and partnership development from the ground up. I also co-founded a technology literacy program that taught Python, design, and entrepreneurship to 50+ young people in Zanzibar. These experiences shaped how I approach problems: start with the people affected, then build.</p>
           <p>I'm looking for Summer 2027 internships where product judgment and hands-on AI engineering matter — <strong>product management first</strong>, and AI/ML, forward-deployed, full-stack, and software engineering roles where I can ship things users love.</p>
         </div>
         <div class="about-facts">
           <h3>Quick facts</h3>
           <ul>
             <li>📍 Alfred, NY — open to relocation &amp; remote</li>
-            <li>🎓 B.S. Computer Science, Class of 2029</li>
-            <li>🏆 Presidential Scholar — full-ride merit scholarship</li>
-            <li>🚀 UNDP-funded fintech founder</li>
+            <li>🎓 Computer Science, Class of 2029</li>
+            <li>🏆 Presidential Scholarship recipient</li>
+            <li>🚀 Fintech founder — funded via UNDP's Funguo Program</li>
+            <li>🤝 Co-founder, Smota nonprofit &amp; The Kajengwa Project</li>
             <li>🤖 AI4ALL Ignite Fellow &amp; CodePath AI Fellow</li>
             <li>💼 Goldman Sachs Possibilities · McKinsey Forward</li>
           </ul>
@@ -122,7 +125,7 @@
           <h3>Startup Founder — Kibenki <span class="tl-loc">Zanzibar, Tanzania</span></h3>
           <ul>
             <li>Founded a fintech startup providing emergency liquidity and financial access to SME workers excluded from traditional credit markets; owned product vision, user research, and roadmap end to end.</li>
-            <li>Raised 4,000,000 TZS in seed capital from UNDP; secured venture-building support from Starthub Africa and the Funguo Program (UNDP, EU, UK Aid) through investor pitches and stakeholder management.</li>
+            <li>Raised 4,000,000 TZS in seed capital through UNDP's Funguo Program (UNDP, EU, UK Aid); secured venture-building support from Starthub Africa through investor pitches and stakeholder management.</li>
             <li>Led regulatory compliance, business formalization, and tax strategy with the Tanzania Startup Association.</li>
           </ul>
         </article>
@@ -303,10 +306,30 @@
     </div>
   </section>
 
-  <!-- ============ SKILLS ============ -->
-  <section id="skills" class="section">
+  <!-- ============ CODEPATH ============ -->
+  <section id="codepath" class="section">
     <div class="container">
-      <h2><span class="section-num">05</span> Skills</h2>
+      <h2><span class="section-num">05</span> CodePath — Applied AI Engineering</h2>
+      <div class="spotlight">
+        <div>
+          <p class="spotlight-lead">In Spring 2025 I completed <a href="https://www.codepath.org/" target="_blank" rel="noopener">CodePath's</a> Applied AI Engineering fellowship, building <strong>7 production-ready AI applications across 5 modules</strong> — completing 100% of program milestones with testing and documentation best practices.</p>
+          <p>The projects spanned the modern AI engineering stack: <strong>DocuBot</strong> (RAG document Q&amp;A with vector search and embeddings), <strong>BugHound</strong> (agentic debugging assistant), <strong>PawPal</strong> (AI pet care management), and <strong>Game Glitch Investigator</strong> (LLM-based fault diagnosis) — built on Claude (Anthropic) and OpenAI APIs.</p>
+          <h3>How it prepared me for AI &amp; engineering roles</h3>
+          <ul class="check-list">
+            <li><strong>Production AI engineering</strong> — RAG pipelines, vector search, embeddings, and agentic workflows built as working applications, not notebooks — the core toolkit for AI/ML and AI agents roles.</li>
+            <li><strong>Safety-first system design</strong> — architected human-in-the-loop systems with guardrails and risk-aware decision logic, reducing failure surface area in high-stakes automated workflows.</li>
+            <li><strong>Shipping discipline</strong> — 7 applications delivered on schedule with testing and documentation standards, the habits forward-deployed and product engineering teams depend on.</li>
+            <li><strong>API-native development</strong> — hands-on depth with Claude and OpenAI APIs, prompt engineering, and LangChain across multiple problem domains.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section id="skills" class="section section-alt">
+    <div class="container">
+      <h2><span class="section-num">06</span> Skills</h2>
       <div class="skills-grid">
         <div class="skill-group">
           <h3>Product &amp; Business</h3>
@@ -340,7 +363,7 @@
   <!-- ============ CONTACT ============ -->
   <section id="contact" class="section section-contact">
     <div class="container">
-      <h2><span class="section-num">06</span> Let's Talk</h2>
+      <h2><span class="section-num">07</span> Let's Talk</h2>
       <p class="contact-lead">Recruiting for Summer 2027? I'd love to hear about your team.</p>
       <div class="hero-actions">
         <a href="mailto:wjf3@alfred.edu" class="btn btn-primary">wjf3@alfred.edu</a>

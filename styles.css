@@ -83,6 +83,8 @@ main, .nav, .footer { position: relative; z-index: 2; }
   color: var(--text); letter-spacing: 0.02em;
 }
 .brand span { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.brand { display: inline-flex; align-items: center; gap: 10px; }
+.brand-logo { width: 32px; height: 32px; display: block; }
 .brand:hover { text-decoration: none; }
 .nav-links { display: flex; align-items: center; gap: 22px; }
 .nav-links a { color: var(--text-dim); font-weight: 500; font-size: 0.95rem; transition: color 0.15s ease; }
