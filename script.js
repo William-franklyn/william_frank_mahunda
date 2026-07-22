@@ -83,3 +83,81 @@ filterButtons.forEach((btn) => {
     });
   });
 });
+
+// ── Hidden visit stats (secret: click the © in the footer) ──────────────────
+// Powered by GoatCounter — free, privacy-friendly analytics. Clicking © shows
+// the total visit count. The full breakdown you asked about — visitors' COUNTRY,
+// city-level region, DEVICE, BROWSER and how they found you (REFERRER) — lives in
+// your private dashboard at https://<code>.goatcounter.com, which only you can log
+// into. That's the right place for it: precise identity can't be captured from a
+// browser without a permission popup, and publishing visitor locations on a public
+// button would expose their personal data (and yours) to anyone who clicks.
+//
+//  ▶ TO ACTIVATE (one-time, ~2 min):
+//    1. Sign up free at https://www.goatcounter.com/  and choose a code
+//       (your dashboard becomes <code>.goatcounter.com).
+//    2. Put that code on the ONE line below. That's it — tracking + the
+//       secret counter both switch on. Nothing else to edit.
+(() => {
+  const GC_CODE = 'YOURCODE'; // ← replace YOURCODE with your GoatCounter code
+
+  const secret = document.getElementById('visitSecret');
+  if (!secret) return;
+  secret.style.cursor = 'default'; // looks like plain text — stays secret
+
+  // Load the GoatCounter tracker (auto-counts this pageview) once configured.
+  if (GC_CODE !== 'YOURCODE') {
+    const t = document.createElement('script');
+    t.async = true;
+    t.src = '//gc.zgo.at/count.js';
+    t.setAttribute('data-goatcounter', `https://${GC_CODE}.goatcounter.com/count`);
+    document.head.appendChild(t);
+  }
+
+  secret.addEventListener('click', (e) => {
+    e.preventDefault();
+    let panel = document.getElementById('visitPanel');
+    if (panel) { panel.remove(); return; } // click again to close
+
+    panel = document.createElement('div');
+    panel.id = 'visitPanel';
+    Object.assign(panel.style, {
+      position: 'fixed', bottom: '18px', right: '18px', zIndex: '9999',
+      background: 'rgba(12,16,32,0.96)', color: '#eaf0ff',
+      border: '1px solid rgba(120,160,255,0.35)', borderRadius: '12px',
+      padding: '14px 16px', font: '13px/1.5 Inter, system-ui, sans-serif',
+      maxWidth: '260px', boxShadow: '0 12px 40px rgba(0,0,0,0.55)',
+    });
+    panel.innerHTML = '<div style="opacity:.7">Loading visits…</div>';
+    document.body.appendChild(panel);
+
+    if (GC_CODE === 'YOURCODE') {
+      panel.innerHTML =
+        '<strong>Counter not set up yet.</strong><br>' +
+        'Add your GoatCounter code in <code>script.js</code> to switch this on. ' +
+        'Visitor country / device / referrer then appear in your private dashboard.';
+    } else {
+      fetch(`https://${GC_CODE}.goatcounter.com/counter/TOTAL.json`)
+        .then((r) => r.json())
+        .then((d) => {
+          panel.innerHTML =
+            `<div style="font-size:24px;font-weight:700">${d.count}</div>` +
+            `<div style="opacity:.75;margin-bottom:8px">total visits · ${d.count_unique || '—'} unique</div>` +
+            `<a href="https://${GC_CODE}.goatcounter.com" target="_blank" rel="noopener" style="color:#7ba8ff;text-decoration:none">Open full dashboard ↗</a>` +
+            `<div style="opacity:.5;font-size:11px;margin-top:6px">Country, device &amp; referrer are in your dashboard (private to you).</div>`;
+        })
+        .catch(() => { panel.innerHTML = 'Stats unavailable right now.'; });
+    }
+
+    // Dismiss when clicking anywhere else.
+    setTimeout(() => {
+      const off = (ev) => {
+        if (!panel.contains(ev.target) && ev.target !== secret) {
+          panel.remove();
+          document.removeEventListener('click', off);
+        }
+      };
+      document.addEventListener('click', off);
+    }, 0);
+  });
+})();
