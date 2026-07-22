@@ -198,6 +198,20 @@
 
       <div class="projects-grid" id="projectsGrid">
 
+        <article class="card" data-tags="ai product">
+          <a href="https://jet-engineml.streamlit.app" target="_blank" rel="noopener" class="card-shot"><img src="assets/jet-engine.png" alt="Jet Engine RUL Predictor — predicted vs. actual RUL (RMSE 18.0, MAE 13.3, R² 0.81)" loading="lazy"></a>
+          <div class="card-head">
+            <h3>Jet Engine Predictive Maintenance</h3>
+            <span class="badge badge-live">Live</span>
+          </div>
+          <p>Machine learning model predicting a jet engine's remaining useful life (RUL) on NASA's Turbofan (CMAPSS) dataset — applying Random Forest and Logistic Regression to multi-sensor degradation data with bias auditing and cross-validation across engine types. Built as an AI4ALL Ignite team project and deployed as an interactive Streamlit dashboard.</p>
+          <div class="tags"><span>Python</span><span>scikit-learn</span><span>Pandas</span><span>Streamlit</span><span>Responsible AI</span></div>
+          <div class="card-links">
+            <a href="https://jet-engineml.streamlit.app" target="_blank" rel="noopener" class="btn btn-small btn-primary">Live Demo ↗</a>
+            <a href="https://github.com/William-franklyn/Jet-Engine-Predictive-Maintenance-ML" target="_blank" rel="noopener" class="btn btn-small btn-ghost">Code ↗</a>
+          </div>
+        </article>
+
         <article class="card" data-tags="product ai">
           <div class="card-shot"><img src="assets/vantage.png" alt="Vantage AI — advisor dashboard sign-in" loading="lazy"></div>
           <div class="card-head">
@@ -318,7 +332,11 @@
       <div class="spotlight">
         <div>
           <p class="spotlight-lead">In Summer 2026 I was selected for <a href="https://ai-4-all.org/" target="_blank" rel="noopener">AI4ALL Ignite</a>, a national accelerator that develops emerging AI leaders through hands-on, responsible machine learning work.</p>
-          <p>With a 7-person team, I built a model predicting jet engine <strong>remaining useful life (RUL)</strong> on the NASA Turbofan (CMAPSS) dataset — the kind of predictive-maintenance problem where model errors have real safety and cost consequences.</p>
+          <p>With a 7-person team, I built a model predicting jet engine <strong>remaining useful life (RUL)</strong> on the NASA Turbofan (CMAPSS) dataset — the kind of predictive-maintenance problem where model errors have real safety and cost consequences. The Random Forest model reaches <strong>RMSE 18.0 / MAE 13.3 / R² 0.81</strong> on unseen engines, and we shipped it as an interactive dashboard.</p>
+          <div class="hero-actions" style="margin: 4px 0 18px;">
+            <a href="https://jet-engineml.streamlit.app" target="_blank" rel="noopener" class="btn btn-small btn-primary">Try the Live Dashboard ↗</a>
+            <a href="https://github.com/William-franklyn/Jet-Engine-Predictive-Maintenance-ML" target="_blank" rel="noopener" class="btn btn-small btn-ghost">View Code ↗</a>
+          </div>
           <h3>How it prepared me for product &amp; AI roles</h3>
           <ul class="check-list">
             <li><strong>Responsible AI in practice</strong> — audited dataset bias with sub-group performance analysis and cross-validation across engine types, not just aggregate accuracy.</li>
