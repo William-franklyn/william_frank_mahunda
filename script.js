@@ -105,13 +105,41 @@ filterButtons.forEach((btn) => {
   if (!secret) return;
   secret.style.cursor = 'default'; // looks like plain text — stays secret
 
-  // Load the GoatCounter tracker (auto-counts this pageview) once configured.
-  if (GC_CODE !== 'YOURCODE') {
+  // Load the GoatCounter tracker (auto-counts this pageview) — but NOT on your
+  // own browser if you've excluded it. GoatCounter skips any browser whose
+  // localStorage has skipgc='t'; we also avoid loading the tracker at all.
+  if (GC_CODE !== 'YOURCODE' && localStorage.getItem('skipgc') !== 't') {
     const t = document.createElement('script');
     t.async = true;
     t.src = '//gc.zgo.at/count.js';
     t.setAttribute('data-goatcounter', `https://${GC_CODE}.goatcounter.com/count`);
     document.head.appendChild(t);
+  }
+
+  // Render the stats panel, including a per-browser "don't count me" toggle.
+  function renderStats(panel, d) {
+    const off = localStorage.getItem('skipgc') === 't';
+    panel.innerHTML =
+      `<div style="font-size:24px;font-weight:700">${d.count}</div>` +
+      `<div style="opacity:.75;margin-bottom:8px">total visits · ${d.count_unique || '—'} unique</div>` +
+      `<a href="https://${GC_CODE}.goatcounter.com" target="_blank" rel="noopener" style="color:#7ba8ff;text-decoration:none">Open full dashboard ↗</a>` +
+      `<div style="opacity:.5;font-size:11px;margin:6px 0 10px">Country, device &amp; referrer are in your dashboard (private to you).</div>` +
+      `<div style="border-top:1px solid rgba(120,160,255,0.25);padding-top:8px;font-size:12px">This browser is <strong style="color:${off ? '#7be0a3' : '#ffcf7b'}">${off ? 'excluded' : 'being counted'}</strong>.</div>`;
+    const btn = document.createElement('button');
+    btn.textContent = off ? 'Start counting this browser' : "Don't count my visits";
+    Object.assign(btn.style, {
+      marginTop: '6px', width: '100%', cursor: 'pointer',
+      background: 'rgba(120,160,255,0.15)', color: '#eaf0ff',
+      border: '1px solid rgba(120,160,255,0.35)', borderRadius: '8px',
+      padding: '6px 8px', font: '12px Inter, system-ui, sans-serif',
+    });
+    btn.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      if (localStorage.getItem('skipgc') === 't') localStorage.removeItem('skipgc');
+      else localStorage.setItem('skipgc', 't');
+      renderStats(panel, d);
+    });
+    panel.appendChild(btn);
   }
 
   secret.addEventListener('click', (e) => {
@@ -139,13 +167,7 @@ filterButtons.forEach((btn) => {
     } else {
       fetch(`https://${GC_CODE}.goatcounter.com/counter/TOTAL.json`)
         .then((r) => r.json())
-        .then((d) => {
-          panel.innerHTML =
-            `<div style="font-size:24px;font-weight:700">${d.count}</div>` +
-            `<div style="opacity:.75;margin-bottom:8px">total visits · ${d.count_unique || '—'} unique</div>` +
-            `<a href="https://${GC_CODE}.goatcounter.com" target="_blank" rel="noopener" style="color:#7ba8ff;text-decoration:none">Open full dashboard ↗</a>` +
-            `<div style="opacity:.5;font-size:11px;margin-top:6px">Country, device &amp; referrer are in your dashboard (private to you).</div>`;
-        })
+        .then((d) => renderStats(panel, d))
         .catch(() => { panel.innerHTML = 'Stats unavailable right now.'; });
     }
 
