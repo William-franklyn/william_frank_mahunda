@@ -99,7 +99,7 @@ filterButtons.forEach((btn) => {
 //    2. Put that code on the ONE line below. That's it — tracking + the
 //       secret counter both switch on. Nothing else to edit.
 (() => {
-  const GC_CODE = 'YOURCODE'; // ← replace YOURCODE with your GoatCounter code
+  const GC_CODE = 'williammahunda'; // your GoatCounter code
 
   const secret = document.getElementById('visitSecret');
   if (!secret) return;
