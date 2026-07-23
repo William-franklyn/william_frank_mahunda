@@ -105,16 +105,9 @@ filterButtons.forEach((btn) => {
   if (!secret) return;
   secret.style.cursor = 'default'; // looks like plain text — stays secret
 
-  // Load the GoatCounter tracker (auto-counts this pageview) — but NOT on your
-  // own browser if you've excluded it. GoatCounter skips any browser whose
-  // localStorage has skipgc='t'; we also avoid loading the tracker at all.
-  if (GC_CODE !== 'YOURCODE' && localStorage.getItem('skipgc') !== 't') {
-    const t = document.createElement('script');
-    t.async = true;
-    t.src = '//gc.zgo.at/count.js';
-    t.setAttribute('data-goatcounter', `https://${GC_CODE}.goatcounter.com/count`);
-    document.head.appendChild(t);
-  }
+  // Tracking itself is the static GoatCounter <script> tag in each HTML page.
+  // It natively skips any browser whose localStorage has skipgc='t', which the
+  // toggle below sets — so your own visits stop counting once you flip it.
 
   // Render the stats panel, including a per-browser "don't count me" toggle.
   function renderStats(panel, d) {
