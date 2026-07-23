@@ -159,9 +159,18 @@ filterButtons.forEach((btn) => {
         'Visitor country / device / referrer then appear in your private dashboard.';
     } else {
       fetch(`https://${GC_CODE}.goatcounter.com/counter/TOTAL.json`)
-        .then((r) => r.json())
+        .then((r) => { if (!r.ok) throw r.status; return r.json(); })
         .then((d) => renderStats(panel, d))
-        .catch(() => { panel.innerHTML = 'Stats unavailable right now.'; });
+        .catch((err) => {
+          if (err === 403) {
+            panel.innerHTML =
+              '<strong>Counter switch is off.</strong><br>' +
+              `In GoatCounter → <a href="https://${GC_CODE}.goatcounter.com/settings/main" target="_blank" rel="noopener" style="color:#7ba8ff">Settings → Site settings</a>, ` +
+              "enable <em>“Allow using the visitor counter”</em> and Save. Your dashboard already has the data.";
+          } else {
+            panel.innerHTML = 'Stats unavailable right now.';
+          }
+        });
     }
 
     // Dismiss when clicking anywhere else.
